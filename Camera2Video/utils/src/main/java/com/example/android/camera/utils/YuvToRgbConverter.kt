@@ -28,7 +28,7 @@ import android.renderscript.ScriptIntrinsicYuvToRGB
 import android.renderscript.Type
 
 /**
- * Helper class used to efficiently convert a [Media.Image] object from
+ * Helper class used to efficiently convert an [Image] object from
  * [ImageFormat.YUV_420_888] format to an RGB [Bitmap] object.
  *
  * The [yuvToRgb] method is able to achieve the same FPS as the CameraX image
@@ -49,6 +49,8 @@ class YuvToRgbConverter(context: Context) {
     private lateinit var inputAllocation: Allocation
     private lateinit var outputAllocation: Allocation
 
+    // This could be changed to use ImageProxy instead. See:
+    // https://github.com/rogerthat94/camera-samples/commit/4364ae25dc7da500400c877a8ac5565e4cd55eec
     @Synchronized
     fun yuvToRgb(image: Image, output: Bitmap) {
 
